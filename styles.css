@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --blue: hsl(223, 87%, 63%);
+  --pale-blue: hsl(223, 100%, 88%);
+  --dark-blue: hsl(209, 33%, 12%);
+
+  --red: hsl(354, 100%, 66%);
+  --gray: hsl(0, 0%, 59%);
+
+  --ff-main: "Libre Franklin", sans-serif;
+  --fw-bold: 700;
+  --fw-semi-bold: 600;
+  --fw-reg: 400;
+  --fw-light: 300;
+
+  --site-tb-margin: 3rem;
+  --site-margin: 0 2rem;
+  --site-gap: 2rem;
+}
+
+/* CSS Reset: https://piccalil.li/blog/a-modern-css-reset/ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  min-height: 100vh;
+
+  font-family: var(--fw-main);
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 
+================
+Main CSS
+================
+*/
+
+body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--site-gap);
+  font-family: var(--ff-main);
+
+  margin: 4rem 0 2rem 0;
+}
+
+header,
+main,
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: var(--site-margin);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ping__logo {
+  align-self: center;
+}
+
+.ping__header {
+  color: var(--gray);
+  font-size: clamp(1.8rem, 1.514rem + 1.429vw, 2.8rem);
+  font-weight: var(--fw-reg);
+}
+
+.ping__header span {
+  color: #000;
+  font-weight: var(--fw-bold);
+}
+
+.ping__sub-heading {
+  color: var(--dark-blue);
+  font-size: clamp(0.9rem, 0.814rem + 0.429vw, 1.2rem);
+}
+
+.ping__form {
+  display: flex;
+  flex-direction: column;
+  min-width: 100%;
+  gap: 1rem;
+}
+
+.form__email,
+.form__submit {
+  border-radius: 2rem;
+  align-self: stretch;
+}
+
+.form__email {
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  padding: .5rem 0 .5rem 1.5rem;
+}
+
+.form__submit {
+  color: #fff;
+  background-color: var(--blue);
+  border: none;
+  padding: .5rem 0;
+
+  box-shadow: 0px 5px 10px 2px rgba(76, 123, 243, 23.04%);
+}
+
+.form__submit:hover {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  .ping__form {
+    flex-direction: row;
+    min-width: auto;
+  }
+
+  .form__email {
+    padding: .5rem 0 .5rem 1.5rem;
+    min-width: clamp(15rem, 7.857rem + 19.048vw, 25rem);
+  }
+
+  .form__submit {
+    padding: .5rem 2rem;
+  }
+
+  .ping__illusitration {
+    max-width: clamp(30rem, 22.857rem + 19.048vw, 40rem);
+  }
+}
+
+.ping__socials {
+  display: flex;
+  gap: 1rem;
+  fill: var(--blue);
+}
+
+.ping__socials a {
+  display: flex;
+  justify-content: center;
+  border: 1px solid var(--pale-blue);
+  border-radius: 100%;
+  padding: .8rem;
+}
+
+.ping__socials a:hover {
+  border: none;
+  background-color: var(--blue);
+}
+
+.ping__socials a:hover svg {
+  fill: #fff;
+}
+
+.ping__copyright {
+  color: var(--gray);
+  font-size: .8rem;
+  margin-top: 1rem;
+}
+
+/* 
+================
+Form Errors
+================
+*/
+
+.form__error {
+  display: none;
+  
+  color: var(--red);
+  font-size: .7rem;
+  font-style: italic;
+  line-height: 0;
+}
+
+@media only screen and (min-width: 600px) {
+  .ping__form {
+    position: relative;
+  }
+
+  .form__error {
+    position: absolute;
+    top: 3.4rem;
+    left: 1rem;
+  }
+}
+
+.form__email:not(:focus):invalid {
+  border: 1px solid var(--red);
+}
+
+.form__email:not(:focus):invalid ~ .form__error {
+  display: block;
+}
